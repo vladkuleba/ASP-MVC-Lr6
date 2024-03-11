@@ -1,0 +1,15 @@
+﻿@model ASP_MVC_Lr6.Models.User
+
+<h2>Реєстрація</h2>
+
+<form asp-action="Register" method="post">
+    <div>
+        <label for="Name">Ім'я:</label>
+        <input type="text" id="Name" name="Name" required />
+    </div>
+    <div>
+        <label for="Age">Вік:</label>
+        <input type="number" id="Age" name="Age" required />
+    </div>
+    <button type="submit">Реєстрація</button>
+</form>

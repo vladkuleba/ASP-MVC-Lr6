@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Вибір піц";
+}
+
+<h2>Виберіть піцу</h2>
+
+<form asp-action="CompleteOrder" method="post">
+    @for (int i = 0; i < ViewBag.Quantity; i++)
+    {
+        <div>
+            <label>Піца #@(i + 1)</label>
+
+            <select name="selectedPizzas">
+                @foreach (var pizza in ViewBag.PizzaOptions)
+                {
+                    <option value="@pizza.Id">@pizza.Name - @pizza.Ingredients (@pizza.Price) грн</option>
+                }
+            </select>
+        </div>
+    }
+
+    <button type="submit">Замовити</button>
+</form>

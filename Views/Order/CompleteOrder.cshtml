@@ -1,0 +1,36 @@
+﻿@model List<ASP_MVC_Lr6.Models.Product>
+
+@{
+    ViewBag.Title = "Підтвердження замовлення";
+    decimal totalPrice = Model.Sum(pizza => pizza.Price);
+}
+
+<h2>Підтвердження замовлення</h2>
+
+@if (Model.Count > 0)
+{
+    <h3>Ваше замовлення:</h3>
+    <ul>
+        @foreach (var pizza in Model)
+        {
+            <li>
+                <strong>@pizza.Name</strong> - @pizza.Ingredients (@pizza.Size) - <strong>@pizza.Price грн</strong>
+            </li>
+        }
+    </ul>
+    <h4>Загальна сума замовлення: @totalPrice грн</h4>
+    <button type="button" onclick="confirmOrder()">Підтвердити замовлення</button>
+}
+else
+{
+    <p>Ваше замовлення порожнє.</p>
+}
+
+<button onclick="location.href='@Url.Action("Register", "Order")'">Нове замовлення</button>
+
+<script>
+    function confirmOrder() {
+        alert('Ваше замовлення підтверджено!');
+        window.location.href = '@Url.Action("Register", "Order")'; // Перенаправлення на сторінку реєстрації або будь-яку іншу сторінку
+    }
+</script>
